@@ -1,0 +1,68 @@
+{
+  "info": {
+    "_postman_id": "ea56e942-55ef-41b7-8836-e36fd819af98",
+    "name": "auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54307518",
+    "_collection_link": "https://go.postman.co/collection/54307518-ea56e942-55ef-41b7-8836-e36fd819af98?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "create token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "let responsejson = pm.response.json();\r",
+              "var token = responsejson.token;\r",
+              "\r",
+              "\r",
+              "pm.environment.set (\"take token\",token);\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/auth",
+          "protocol": "https",
+          "host": [
+            "restful-booker",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
